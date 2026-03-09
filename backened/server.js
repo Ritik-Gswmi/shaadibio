@@ -40,27 +40,12 @@ connectDB().then(async () => {
 
 
 // middleware
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
 
-    const allowed = [
-      process.env.CLIENT_URL,
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "http://127.0.0.1:5173",
-      "http://127.0.0.1:5174"
-    ].filter(Boolean);
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 
-    if (allowed.includes(origin) || origin.match(/^http:\/\/localhost:\d+$/)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  }
-};
-
-app.use(cors(corsOptions));
 app.use(express.json({ limit: "5mb" }));
 app.use("/uploads", express.static("uploads"));
 
