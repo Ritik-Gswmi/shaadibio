@@ -9,7 +9,7 @@ ShaadiBio is a full-stack MERN application that allows users to create, manage, 
 Frontend + Backend (after deployment)
 
 ```
-https://your-app.onrender.com
+https://shaadibio-pf3j.onrender.com
 ```
 
 ---
