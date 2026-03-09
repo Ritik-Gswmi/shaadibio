@@ -100,7 +100,7 @@ app.use("/assets", express.static(path.join(buildPath, "assets")));
 app.use(express.static(buildPath, { index: false }));
 
 // react fallback
-app.get("*", (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
