@@ -67,11 +67,6 @@ app.use(limiter);
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/biodata", require("./routes/biodataRoutes"));
 
-// global error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Server error' });
-});
 
 app.use("/assets", express.static(path.join(__dirname, "frontened-build/assets")));
 app.use(express.static(path.join(__dirname, "frontened-build")));
@@ -81,6 +76,14 @@ app.use((req, res) => {
     path.join(__dirname, "frontened-build", "index.html")
   );
 });
+
+
+// global error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Server error' });
+});
+
 
 
 const PORT = process.env.PORT || 5000;
