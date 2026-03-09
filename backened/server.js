@@ -67,6 +67,18 @@ app.use(limiter);
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/biodata", require("./routes/biodataRoutes"));
 
+// 🔎 DEBUG ROUTE 
+const fs = require("fs");
+
+app.get("/debug-assets", (req, res) => {
+  const assetsPath = path.join(__dirname, "frontened-build/assets");
+  try {
+    const files = fs.readdirSync(assetsPath);
+    res.json(files);
+  } catch (err) {
+    res.json({ error: err.message, path: assetsPath });
+  }
+});
 
 app.use("/assets", express.static(path.join(__dirname, "frontened-build/assets")));
 app.use(express.static(path.join(__dirname, "frontened-build")));
