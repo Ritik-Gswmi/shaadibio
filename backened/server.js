@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
 const connectDB = require("./config/db");
 const path = require("path");
-const fs = require("fs");
 
 dotenv.config();
 
@@ -60,18 +59,6 @@ app.use(limiter);
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/biodata", require("./routes/biodataRoutes"));
 
-
-// 🔎 DEBUG ROUTE
-app.get("/debug-assets", (req, res) => {
-  const assetsPath = path.join(__dirname, "frontened-build/assets");
-
-  try {
-    const files = fs.readdirSync(assetsPath);
-    res.json(files);
-  } catch (err) {
-    res.json({ error: err.message, path: assetsPath });
-  }
-});
 
 
 // ---------- FRONTEND SERVING ----------
