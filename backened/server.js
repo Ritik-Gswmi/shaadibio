@@ -73,7 +73,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Server error' });
 });
 
-
+app.use("/assets", express.static(path.join(__dirname, "frontened-build/assets")));
 app.use(express.static(path.join(__dirname, "frontened-build")));
 
 app.use((req, res) => {
