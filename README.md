@@ -158,10 +158,10 @@ The project can be deployed using:
 
 ## 👨‍💻 Author
 
-Your Name
+Ritik Kumar
 
 GitHub:
-https://github.com/yourusername
+https://github.com/Ritik-Gswmi
 
 
 ## 📄 License
